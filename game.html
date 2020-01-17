@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #grid{
+        margin: 5px;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+      }
+      h1{
+        font-size: 45px;
+        text-align: center;
+        border-bottom: 1px solid gray;
+      }
+      a{
+        color:#280483;
+        text-decoration: none;
+      }
+      #board
+      {
+        border: 1px solid black;
+        background-color: #4da6ff;
+        height: 350px;
+        width: 650px;
+      }
+        .gameImg{
+          background-color: lightblue;
+          width: 120px;
+          height: 120px;
+          padding: 10px;
+          margin: 10px;
+          float: left;
+        }
+        .hidden {
+          display: none;
+        }
+        .visable {
+          display: block;
+        }
+
+    </style>
+    <script type="text/javascript">
+      var counts = 0;
+      var imgVisable= false;
+      function startGame()
+      {
+        alert("게임시작!");
+        gameLoop();
+      }
+
+      function gameLoop()
+      {
+        flashImage();
+        createImage();
+        imgVisable=!imgVisable;
+        counts++;
+        if (counts < 12)
+        {
+          setTimeout(gameLoop, 3000);
+        }
+        else
+        {
+          alert("게임 끝~!!!");
+        }
+      }
+
+      function flashImage()
+        {
+            var board = document.getElementById("board");
+            var classToSet = "";
+
+            if (imgVisable) {
+                classToSet = "gameImg visable";
+            }
+            else {
+                classToSet = "gameImg hidden";
+            }
+
+            for (var i = 0; i < 8; i++) {
+                board.children[i].className = classToSet;
+            }
+        }
+
+        function createImage()
+        {
+            var board = document.getElementById("board");
+
+            for (var i = 0; i < 8; i++) {
+                board.children[i].innerHTML = "Image";
+            }
+            var randomNumber = Math.floor(Math.random() * 8) + 1;
+            board.children[randomNumber-1].innerHTML = "Diff";
+        }
+    </script>
+  </head>
+
+  <body style="background-color:#C8C8FF">
+    <h1><a href="index.html"><strong>LIYEON YOON's WEB</strong></a></h1>
+    <div id="grid">
+      <div style="background-color:#B4B4FF">
+        <ol>
+          <li><a href="1.html"> </a></li>
+          <li><a href="2.html"> </a></li>
+          <li><a href="1.html"> </a></li>
+          <li><a href="3.html"> </a></li>
+          <li><a href="4.html"> </a></li>
+        <ol>
+
+
+      </div>
+      <div class="내용">
+
+        <div class="" id="board">
+          <div id="board">
+            <div class="gameImg">1</div>
+            <div class="gameImg">2</div>
+            <div class="gameImg">3</div>
+            <div class="gameImg">4</div>
+            <div class="gameImg">5</div>
+            <div class="gameImg">6</div>
+            <div class="gameImg">7</div>
+            <div class="gameImg">8</div>
+
+        </div>
+
+<input type="button" name="" value="START" onclick="startGame();">
+      </div>
+    </div>
+
+
+  </body>
+</html>
